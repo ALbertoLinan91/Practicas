@@ -1,8 +1,8 @@
-#include<stidnt.h>
+#include<stdint.h>
 
   //Definir pines para los LEds
   uint8_t red_led = 15;  //Pin led rojo
-  uint8_t green_led = 16;  //Pin led verde
+  uint8_t green_led = 18;  //Pin led verde
 
   // Variables de temporizadores
   uint64_t previus_millis_red = 0;
@@ -10,14 +10,14 @@
 
   //Intervalos
   uint64_t red_interval = 1000;
-   green_interval = 2000;
+  uint64_t green_interval = 2000;
 
 
 void setup() {
   // Configurar los pines como salida
   Serial.begin(9600);
   pinMode(red_led,OUTPUT);
-  pinMode(green_led,OUTOUT);
+  pinMode(green_led,OUTPUT);
 
   //Inicializar led apagados
   digitalWrite(red_led,LOW);
@@ -36,11 +36,11 @@ void loop() {
   }
 
   if(actual_millis - previus_millis_green > green_interval){
-  previus_millis_green = milli();
+  previus_millis_green = millis();
   if(digitalRead(green_led)  ) {
     digitalWrite(green_led, false);
   }else{
-    digitalWrite(green_led, true)
+    digitalWrite(green_led, true);
     }
   }
 }

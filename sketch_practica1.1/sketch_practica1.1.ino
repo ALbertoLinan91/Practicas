@@ -1,8 +1,8 @@
-#include<stdint>
+#include<stdint.h>
 
 //Definir pines para LEDs
 int8_t red_led = 15; //Pin del led rojo
-int8_t green_led = 16; //Pin del led verde
+int8_t green_led = 18; //Pin del led verde
 
 void setup() {
   //Inicializamos el puerto serie para mostrar por pantalla
