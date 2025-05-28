@@ -1,8 +1,8 @@
 #include <stdint.h>
 
 int32_t LEDPin1 = 13;
-int32_t LEDPin2 = 17;
-int32_t LEDPin3 = 18;
+int32_t LEDPin2 = 18;
+int32_t LEDPin3 = 19;
 int32_t LDRPin = 2;
 int32_t thershold = 100;
 int32_t thershold2 = 500;

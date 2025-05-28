@@ -5,8 +5,8 @@
 #include "time.h" 
 
 // WiFi
-const char* ssid = "xxxxx";//wifi clase :"ALUMNOS_CICLOS" 
-const char* password = "xxxxxx";//password clase :"Ciclos2025sz?" 
+const char* ssid = "ALUMNOS_CICLOS";//wifi clase :"ALUMNOS_CICLOS" 
+const char* password = "Ciclos2025sz?";//password clase :"Ciclos2025sz?" 
 
 // configuración  NTP
 const char* ntpServer = "es.pool.ntp.org";
@@ -15,8 +15,8 @@ const int32_t daylightOffset_sec = 3600;//horario de verano
 
 // Configuración MQTT
 const char* mqtt_server = "broker.emqx.io";
-const char* mqtt_username = "guallar";
-const char* mqtt_password = "1234";
+const char* mqtt_username = "Liñan";
+const char* mqtt_password = "12345";
 const int mqtt_port = 1883;
 
 // permite al dispositivo conectarse a servidores a través de WiFi usando el protocolo TCP/IP.
@@ -25,8 +25,7 @@ PubSubClient mqtt_client(espClient);
 
 struct tm timeinfo;
 
-// LED conectado al pin GPIO 2
-const int ledPin = 2;
+
 
 // Callback MQTT función para programas que utilizan MQTT
 // topic es el nombre del topico,payload datos del mensaje y lenght la longitud del mensaje
@@ -44,10 +43,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   if (message == "1") {
     Serial.println("Encendiendo LED");
-    digitalWrite(ledPin, HIGH); // Encender LED
+    digitalWrite(LED_BUILTIN, HIGH); // Encender LED
   } else if (message == "0") {
     Serial.println("Apagando LED");
-    digitalWrite(ledPin, LOW); // Apagar LED
+    digitalWrite(LED_BUILTIN, LOW); // Apagar LED
   }
 }
 
@@ -68,16 +67,15 @@ void reconnect() {
 void setup() {
   Serial.begin(115200); //velocidad de comunicación de los baudios
 
-  pinMode(ledPin, OUTPUT); // Inicializacíon pin del LED
-  digitalWrite(ledPin, LOW); // el LED inicia apagado
+  pinMode(LED_BUILTIN, OUTPUT); // Inicializacíon pin del LED
+  digitalWrite(LED_BUILTIN, LOW); // el LED inicia apagado
 
   WiFi.begin(ssid, password); //arrabque de la conexión cogiendo el nombre y contraseña del wifi
   Serial.println("Conectando a WiFi...");
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
     Serial.print(".");
-  }
-  Serial.println("\nWiFi conectado. IP:");
+  }  Serial.println("\nWiFi conectado. IP:");
   Serial.println(WiFi.localIP());
 
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);

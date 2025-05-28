@@ -7,7 +7,7 @@ int porValue = 0;
 
 
 void setup() {
-  serialBegun(115200);
+  serialEventRun();
   pinMode(pinLed1, OUTPUT);
   pinMode(pinLed2, OUTPUT);
   pinMode(pinLed3, OUTPUT);
@@ -16,24 +16,24 @@ void setup() {
 }
 
 void loop() {
-  portValue = analogRead(potenciometro);
-  Serial.println(portValue);
+  porValue = analogRead(potenciometro);
+  Serial.println(porValue);
 
-  if(potvalue >= 1365){
+  if(porValue >= 1365){
     digitalWrite(pinLed1, HIGH);
-  }else if (portValue < 1365){
+  }else if (porValue < 1365){
     digitalWrite(pinLed1, LOW);
   }
 
-    if(potvalue >= 2730){
+    if(porValue >= 2730){
     digitalWrite(pinLed2, HIGH);
-  }else if (portValue < 2730){
+  }else if (porValue < 2730){
     digitalWrite(pinLed2, LOW);
   }
 
-    if(potvalue >= 4095){
+    if(porValue >= 4095){
     digitalWrite(pinLed3, HIGH);
-  }else if (portValue < 4095){
+  }else if (porValue < 4095){
     digitalWrite(pinLed3, LOW);
   }
 
